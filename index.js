@@ -1,2 +1,4 @@
-console.log('DEMO...');
-console.log('DEMO...');
+import {dog} from './js/Dog.js';
+
+dog();
+dog();
