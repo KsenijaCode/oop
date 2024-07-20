@@ -3,6 +3,8 @@ export class Dog {
         this.name = vardas;
         this.color = spalva;
         this.age = amzius;
+        this.legsCount = 4;
+        this.hasTail = true; 
     }
 
     hello() {
@@ -19,6 +21,19 @@ export class Dog {
 
     snacks(count) {
         return `${'🍖'.repeat(count)}`;
+    }
+    
+    lostLeg() {
+        if (this.legsCount === 0) {
+            return 'Suo prarado visas letenas'
+        }
+        this.legsCount--;
+        return `Suo neteko letenos`;
+    }
+
+    birthday() {
+        this.age++;
+        return `Brisiaus ${this.age} gimtadienis 🤩`;
     }
 }
 
