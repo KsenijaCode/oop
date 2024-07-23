@@ -5,6 +5,7 @@ export class Pet {
         this.legsCount = 4;
         this.animalType = 'pet';
         this.sound = '🎶';
+        this.soundCount = 2;
         this.pic = '🎁';
     }
 
