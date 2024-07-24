@@ -1,10 +1,38 @@
 export class isValid {
-    static username(str) {
-        const usernameMinLength = 4;
+    static requiredLengthString(str, minLength, maxLength) {
         if (typeof str !== 'string') {
             return false;
         }
-        if (str.length < usernameMinLength) {
+        if (str.length < minLength) {
+            return false;
+        }
+        if (str.length > maxLength) {
+            return false;
+        }
+
+        return true;
+    }
+
+    static containsAllowedSymbols(str, allowedSymbols) {
+        for (const symbol of str) {
+            if (!allowedSymbols.includes(symbol)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    static username(str) {
+        const minLength = 4;
+        const maxLength = 20;
+        const abc = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+        if (!isValid.requiredLengthString(str, minLength, maxLength)) {
+            return false;
+        }
+
+        if (!isValid.containsAllowedSymbols(str, abc)) {
             return false;
         }
 
@@ -12,11 +40,91 @@ export class isValid {
     }
 
     static email(str) {
-        const emailMinLength = 6;
-        if (typeof str !== 'string') {
+        const minLength = 6;
+        const maxLength = 35;
+        const abc = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@.-_';
+
+        if (!isValid.requiredLengthString(str, minLength, maxLength)) {
             return false;
         }
-        if (str.length < emailMinLength) {
+
+        if (!isValid.containsAllowedSymbols(str, abc)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    static phone(str) {
+        const minLength = 8;
+        const maxLength = 20;
+        const abc = '0123456789+-() '
+
+        if (!isValid.requiredLengthString(str, minLength, maxLength)) {
+            return false;
+        }
+
+        if (!isValid.containsAllowedSymbols(str, abc)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    static name(str) {
+        const minLength = 2;
+        const maxLength = 20;
+        const abc = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+        if (!isValid.requiredLengthString(str, minLength, maxLength)) {
+            return false;
+        }
+
+        if (!isValid.containsAllowedSymbols(str, abc)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    static surname(str) {
+        const minLength = 2;
+        const maxLength = 20;
+
+        if (!isValid.requiredLengthString(str, minLength, maxLength)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    static password(str) {
+        const minLength = 8;
+        const maxLength = 25;
+
+        if (!isValid.requiredLengthString(str, minLength, maxLength)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    static IBAN(str) {
+        const minLength = 16;
+        const maxLength = 24;
+
+        if (!isValid.requiredLengthString(str, minLength, maxLength)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    static URL(str) {
+        const minLength = 2;
+        const maxLength = 3000;
+
+        if (!isValid.requiredLengthString(str, minLength, maxLength)) {
             return false;
         }
 
@@ -24,6 +132,13 @@ export class isValid {
     }
 
     static urlSlug(str) {
-        return '';
+        const minLength = 1;
+        const maxLength = 120;
+
+        if (!isValid.requiredLengthString(str, minLength, maxLength)) {
+            return false;
+        }
+
+        return true;
     }
 }
