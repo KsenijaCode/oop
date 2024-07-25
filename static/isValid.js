@@ -23,6 +23,16 @@ export class isValid {
         return true;
     }
 
+    static doesNotContainNotAllowedSymbols(str, allowedSymbols) {
+        for (const symbol of str) {
+            if (!allowedSymbols.includes(symbol)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     static username(str) {
         const minLength = 4;
         const maxLength = 20;
@@ -74,7 +84,7 @@ export class isValid {
     static name(str) {
         const minLength = 2;
         const maxLength = 20;
-        const abc = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const abc = ' 0123456789?!-+=_;:`"@()[]{}\\/|<>,.#~£$%^&*<>\r\n\t';
 
         if (!isValid.requiredLengthString(str, minLength, maxLength)) {
             return false;
